@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init *)",
+      "Bash(npx create-next-app@latest *)",
+      "Bash(mv dashboard-temp/* .)",
+      "Bash(mv dashboard-temp/.* .)",
+      "Bash(rm -rf dashboard-temp)",
+      "Bash(cp *)",
+      "Bash(git checkout *)",
+      "Bash(rm CLAUDE.md AGENTS.md)",
+      "Bash(npm install *)",
+      "Bash(npx prisma *)"
+    ]
+  }
+}
