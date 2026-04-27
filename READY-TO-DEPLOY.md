@@ -29,9 +29,8 @@
 - All dependencies properly listed
 
 ### ✅ Production Integrations
-- Email delivery (Resend) implemented
+- Email delivery (MailerSend) implemented
 - Error monitoring (Sentry) configured
-- Product analytics (PostHog) integrated
 - Rate limiting (Upstash Redis) active
 - Security logging in place
 
@@ -63,7 +62,7 @@ You need accounts and credentials for:
   - Create Redis database
   - Copy REST URL and token
 
-- [ ] **Resend** (Email) - https://resend.com
+- [ ] **MailerSend** (Email) - https://mailersend.com
   - Create account
   - Verify sending domain
   - Generate API key
@@ -72,13 +71,8 @@ You need accounts and credentials for:
   - Create Next.js project
   - Copy DSN
 
-- [ ] **PostHog** (Analytics) - https://posthog.com
-  - Create project
-  - Copy API key
-
 **Optional:**
 - [ ] **Google OAuth** - https://console.cloud.google.com
-- [ ] **GitHub OAuth** - https://github.com/settings/developers
 
 ### 2. Generate Secrets
 
@@ -128,9 +122,8 @@ git add .
 git commit -m "Initial production-ready commit
 
 - Implemented auth, notes, tasks, pomodoro, streaks, analytics
-- Added email delivery (Resend)
+- Added email delivery (MailerSend)
 - Added error monitoring (Sentry)
-- Added product analytics (PostHog)
 - Added rate limiting (Upstash Redis)
 - Premium dark-first UI redesign
 - Production-ready with full documentation"
@@ -203,7 +196,7 @@ UPSTASH_REDIS_REST_TOKEN=...
 
 **Email:**
 ```bash
-RESEND_API_KEY=re_...
+MAILERSEND_API_KEY=...
 EMAIL_FROM=noreply@yourdomain.com
 ```
 
@@ -211,16 +204,12 @@ EMAIL_FROM=noreply@yourdomain.com
 ```bash
 SENTRY_DSN=https://...
 NEXT_PUBLIC_SENTRY_DSN=https://...
-NEXT_PUBLIC_POSTHOG_KEY=phc_...
-NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com
 ```
 
 **Optional OAuth:**
 ```bash
 GOOGLE_CLIENT_ID=...
 GOOGLE_CLIENT_SECRET=...
-GITHUB_CLIENT_ID=...
-GITHUB_CLIENT_SECRET=...
 ```
 
 ### Step 3: Deploy
@@ -249,10 +238,9 @@ See `.env.example` for complete list with descriptions.
 - `AUTH_SECRET` → Generate with `openssl rand -base64 32`
 - `NEXTAUTH_URL` → Your Render URL (e.g., `https://dashboard.onrender.com`)
 - `UPSTASH_REDIS_REST_URL` / `TOKEN` → Upstash Redis dashboard
-- `RESEND_API_KEY` → Resend dashboard
-- `EMAIL_FROM` → Your verified domain in Resend
+- `MAILERSEND_API_KEY` → MailerSend dashboard
+- `EMAIL_FROM` → Your verified domain in MailerSend
 - `SENTRY_DSN` → Sentry project settings
-- `NEXT_PUBLIC_POSTHOG_KEY` → PostHog project settings
 
 ---
 
@@ -292,7 +280,6 @@ Use `DEPLOYMENT-CHECKLIST.md` for complete verification steps.
 - [ ] Complete task works
 - [ ] Complete pomodoro works
 - [ ] Sentry receiving events
-- [ ] PostHog tracking events
 
 ---
 
@@ -311,8 +298,7 @@ Use `DEPLOYMENT-CHECKLIST.md` for complete verification steps.
 - **Render Docs:** https://render.com/docs
 - **Supabase Docs:** https://supabase.com/docs
 - **Sentry Docs:** https://docs.sentry.io
-- **PostHog Docs:** https://posthog.com/docs
-- **Resend Docs:** https://resend.com/docs
+- **MailerSend Docs:** https://developers.mailersend.com
 
 ---
 

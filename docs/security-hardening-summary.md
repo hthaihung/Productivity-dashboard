@@ -260,7 +260,7 @@ npx prisma generate
 **Email Service Not Configured**
 - Password reset tokens logged to console only
 - Users cannot receive reset emails
-- **Fix:** Integrate SendGrid, Resend, or similar
+- **Fix:** Integrate SendGrid, MailerSend, or similar
 
 ### Medium Priority
 
@@ -402,7 +402,7 @@ If issues arise, rollback is straightforward:
 
 ### Short-term (Next Week)
 
-1. Integrate email service (SendGrid/Resend)
+1. Integrate email service (SendGrid/MailerSend)
 2. Add CSP headers
 3. Set up log aggregation
 4. Monitor security events

@@ -155,7 +155,7 @@ UPSTASH_REDIS_REST_TOKEN=""
 
 **Email Delivery**
 - ❌ Password reset tokens logged to console only
-- ❌ No email service integration (SendGrid, Resend, etc.)
+- ❌ No email service integration (SendGrid, MailerSend, etc.)
 - **Impact:** Users cannot actually receive reset links
 - **Workaround:** Admin can retrieve tokens from server logs
 - **Fix:** Integrate email service before public launch

@@ -1,6 +1,6 @@
-import { Resend } from "resend"
+import { MailerSend, EmailParams, Sender, Recipient } from "mailersend"
 
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
+const mailerSend = process.env.MAILERSEND_API_KEY ? new MailerSend({ apiKey: process.env.MAILERSEND_API_KEY }) : null
 
 interface SendPasswordResetEmailParams {
   to: string
@@ -8,7 +8,7 @@ interface SendPasswordResetEmailParams {
 }
 
 export async function sendPasswordResetEmail({ to, resetUrl }: SendPasswordResetEmailParams) {
-  if (!resend) {
+  if (!mailerSend) {
     console.warn("Email service not configured. Password reset email not sent.")
     return { success: false, error: "Email service not configured" }
   }
@@ -16,11 +16,14 @@ export async function sendPasswordResetEmail({ to, resetUrl }: SendPasswordReset
   const fromEmail = process.env.EMAIL_FROM || "noreply@yourdomain.com"
 
   try {
-    await resend.emails.send({
-      from: fromEmail,
-      to,
-      subject: "Reset your password",
-      html: `
+    const sentFrom = new Sender(fromEmail, "Dashboard")
+    const recipients = [new Recipient(to)]
+
+    const emailParams = new EmailParams()
+      .setFrom(sentFrom)
+      .setTo(recipients)
+      .setSubject("Reset your password")
+      .setHtml(`
         <!DOCTYPE html>
         <html>
           <head>
@@ -42,8 +45,9 @@ export async function sendPasswordResetEmail({ to, resetUrl }: SendPasswordReset
             </div>
           </body>
         </html>
-      `,
-    })
+      `)
+
+    await mailerSend.email.send(emailParams)
 
     return { success: true }
   } catch (error) {

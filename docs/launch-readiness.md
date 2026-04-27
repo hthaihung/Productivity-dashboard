@@ -5,7 +5,7 @@ Generated: 2026-04-27
 ## Production Instrumentation Status
 
 ### Email delivery (password reset)
-- ✅ Integrated with Resend transactional email
+- ✅ Integrated with MailerSend transactional email
 - ✅ Password reset requests now send real email links
 - ✅ No reset token logging to console
 - ✅ Safe fallback when email provider is not configured
@@ -58,21 +58,16 @@ Generated: 2026-04-27
    - Set `NEXTAUTH_URL` to exact production origin
    - Ensure OAuth callback URLs are configured in provider dashboards
 
-5. Configure Resend
+5. Configure MailerSend
    - Create API key
-   - Set `RESEND_API_KEY`
+   - Set `MAILERSEND_API_KEY`
    - Set verified sender domain/address in `EMAIL_FROM`
 
 6. Configure Sentry
    - Create project
    - Set `SENTRY_DSN` and `NEXT_PUBLIC_SENTRY_DSN`
 
-7. Configure PostHog
-   - Create project
-   - Set `NEXT_PUBLIC_POSTHOG_KEY`
-   - Set `NEXT_PUBLIC_POSTHOG_HOST`
-
-8. Build and run
+7. Build and run
    - `npm run build`
    - `npm start`
 
@@ -83,19 +78,19 @@ Generated: 2026-04-27
 1. Authentication
    - Signup with new account
    - Signin with created account
-   - Confirm both actions appear in PostHog events
+   - Confirm both actions are logged
 
 2. Password reset
    - Request password reset
    - Confirm email is received
    - Complete password reset via email link
-   - Confirm reset completion event in PostHog
+   - Confirm reset completion event in logs
 
 3. Core tracked actions
    - Create a note and save
    - Complete a task
    - Complete a focus pomodoro session
-   - Confirm events appear in PostHog
+   - Confirm actions are logged
 
 4. Error monitoring
    - Validate Sentry receives at least one handled test event/error
@@ -118,10 +113,7 @@ Generated: 2026-04-27
 3. **No backup/restore runbook**
    Operational recovery process is not yet documented/tested.
 
-4. **Analytics is client-side only**
-   Event delivery depends on browser/network; server-side ingestion is not added.
-
-5. **Sentry sample rates may need tuning**
+4. **Sentry sample rates may need tuning**
    Current defaults are safe for launch but may be too high for long-term cost control.
 
 ---
@@ -144,7 +136,7 @@ UPSTASH_REDIS_REST_TOKEN=...
 
 ### Password reset email
 ```bash
-RESEND_API_KEY=re_...
+MAILERSEND_API_KEY=re_...
 EMAIL_FROM=noreply@yourdomain.com
 ```
 
@@ -154,18 +146,10 @@ SENTRY_DSN=https://...
 NEXT_PUBLIC_SENTRY_DSN=https://...
 ```
 
-### Product analytics
-```bash
-NEXT_PUBLIC_POSTHOG_KEY=phc_...
-NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com
-```
-
 ### Optional OAuth providers
 ```bash
 GOOGLE_CLIENT_ID=...
 GOOGLE_CLIENT_SECRET=...
-GITHUB_CLIENT_ID=...
-GITHUB_CLIENT_SECRET=...
 ```
 
 ---
@@ -252,7 +236,7 @@ All critical blockers have been resolved. The app is ready for initial productio
 
 ### High priority (address soon after launch)
 1. **No email service configured**  
-   Password reset tokens are generated but emails are not sent. Users cannot complete password reset flow until email service (e.g., Resend, SendGrid) is integrated.  
+   Password reset tokens are generated but emails are not sent. Users cannot complete password reset flow until email service (e.g., MailerSend, SendGrid) is integrated.  
    **Impact:** Password reset feature is non-functional.  
    **Workaround:** Manual password reset via database or disable the UI link.
 
@@ -261,10 +245,10 @@ All critical blockers have been resolved. The app is ready for initial productio
    **Impact:** Silent failures, difficult debugging.  
    **Recommendation:** Add Sentry before launch or immediately after.
 
-3. **No analytics tracking**  
+3. **No product analytics**  
    No product analytics (e.g., PostHog, Mixpanel) configured. Cannot measure user behavior or feature adoption.  
    **Impact:** Flying blind on product decisions.  
-   **Recommendation:** Add analytics within first week of launch.
+   **Recommendation:** Add analytics within first week of launch if needed.
 
 ### Medium priority (address within first month)
 4. **Rate limiting depends on Upstash Redis**  
@@ -359,13 +343,13 @@ EMAIL_FROM=noreply@yourdomain.com
    Test the full production build in a staging environment before going live.
 
 2. **Add email service immediately after launch**  
-   Password reset is a critical feature. Integrate Resend or SendGrid within first week.
+   Password reset is a critical feature. Integrate MailerSend or SendGrid within first week.
 
 3. **Add error monitoring on day 1**  
    Sentry or similar should be configured before or immediately after launch.
 
 4. **Add analytics within first week**  
-   Product decisions require data. Add PostHog or Mixpanel early.
+   Product decisions require data. Add PostHog or Mixpanel early if needed.
 
 5. **Document runbook**  
    Create operational runbook covering: deployment, rollback, database migrations, backup/restore, incident response.

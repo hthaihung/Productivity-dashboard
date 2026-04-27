@@ -50,17 +50,13 @@ NEXTAUTH_URL="https://yourdomain.com"
 UPSTASH_REDIS_REST_URL="https://..."
 UPSTASH_REDIS_REST_TOKEN="..."
 
-# Email (Resend)
-RESEND_API_KEY="re_..."
+# Email (MailerSend)
+MAILERSEND_API_KEY="..."
 EMAIL_FROM="noreply@yourdomain.com"
 
 # Error Monitoring (Sentry)
 SENTRY_DSN="https://..."
 NEXT_PUBLIC_SENTRY_DSN="https://..."
-
-# Analytics (PostHog)
-NEXT_PUBLIC_POSTHOG_KEY="phc_..."
-NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"
 ```
 
 ### Optional OAuth Providers
@@ -68,8 +64,6 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"
 ```bash
 GOOGLE_CLIENT_ID="..."
 GOOGLE_CLIENT_SECRET="..."
-GITHUB_CLIENT_ID="..."
-GITHUB_CLIENT_SECRET="..."
 ```
 
 ---
@@ -82,25 +76,18 @@ GITHUB_CLIENT_SECRET="..."
 2. Create a new Redis database
 3. Copy **REST URL** and **REST Token** to env vars
 
-### Resend (Email Delivery)
+### MailerSend (Email Delivery)
 
-1. Create account at https://resend.com
+1. Create account at https://mailersend.com
 2. Add and verify your sending domain
 3. Create an API key
-4. Set `RESEND_API_KEY` and `EMAIL_FROM` (must use verified domain)
+4. Set `MAILERSEND_API_KEY` and `EMAIL_FROM` (must use verified domain)
 
 ### Sentry (Error Monitoring)
 
 1. Create account at https://sentry.io
 2. Create a new Next.js project
 3. Copy the DSN to both `SENTRY_DSN` and `NEXT_PUBLIC_SENTRY_DSN`
-
-### PostHog (Product Analytics)
-
-1. Create account at https://posthog.com
-2. Create a new project
-3. Copy **Project API Key** to `NEXT_PUBLIC_POSTHOG_KEY`
-4. Set `NEXT_PUBLIC_POSTHOG_HOST` to `https://app.posthog.com` (or your self-hosted URL)
 
 ### OAuth Providers (Optional)
 
@@ -111,12 +98,6 @@ GITHUB_CLIENT_SECRET="..."
 4. Create OAuth 2.0 credentials
 5. Add authorized redirect URI: `https://yourdomain.com/api/auth/callback/google`
 6. Copy Client ID and Client Secret
-
-#### GitHub OAuth
-1. Go to https://github.com/settings/developers
-2. Create a new OAuth App
-3. Set Authorization callback URL: `https://yourdomain.com/api/auth/callback/github`
-4. Copy Client ID and generate Client Secret
 
 ---
 
@@ -176,12 +157,10 @@ For platforms like Railway, Render, or DigitalOcean:
 
 ### Monitoring
 - [ ] Check Sentry for any errors
-- [ ] Check PostHog for tracked events
 - [ ] Verify rate limiting works (try rapid requests)
 
 ### OAuth (if configured)
 - [ ] Sign in with Google
-- [ ] Sign in with GitHub
 
 ---
 
@@ -192,8 +171,7 @@ For platforms like Railway, Render, or DigitalOcean:
 - [ ] Domain DNS configured
 - [ ] SSL certificate active
 - [ ] Email sending domain verified
-- [ ] Sentry receiving events
-- [ ] PostHog receiving events
+- [ ] Sentry is receiving errors
 - [ ] Rate limiting tested
 - [ ] Password reset flow tested
 - [ ] OAuth providers tested (if configured)
@@ -214,9 +192,9 @@ For platforms like Railway, Render, or DigitalOcean:
 - Ensure no trailing spaces in values
 
 ### Password reset emails not sending
-- Verify `RESEND_API_KEY` is correct
-- Ensure `EMAIL_FROM` uses a verified domain in Resend
-- Check Resend dashboard for delivery logs
+- Verify `MAILERSEND_API_KEY` is correct
+- Ensure `EMAIL_FROM` uses a verified domain in MailerSend
+- Check MailerSend dashboard for delivery logs
 
 ### Rate limiting not working
 - Verify Upstash Redis credentials are correct
@@ -232,11 +210,6 @@ For platforms like Railway, Render, or DigitalOcean:
 - Verify both `SENTRY_DSN` and `NEXT_PUBLIC_SENTRY_DSN` are set
 - Check Sentry project settings for correct DSN
 - Trigger a test error to verify integration
-
-### PostHog not tracking events
-- Verify `NEXT_PUBLIC_POSTHOG_KEY` is correct
-- Check browser console for PostHog initialization
-- Ensure ad blockers are not blocking PostHog requests
 
 ---
 
@@ -296,9 +269,8 @@ For platforms like Railway, Render, or DigitalOcean:
 
 ### Monitoring Dashboards
 - Sentry: https://sentry.io/organizations/your-org/issues/
-- PostHog: https://app.posthog.com/project/your-project
 - Upstash: https://console.upstash.com/
-- Resend: https://resend.com/emails
+- MailerSend: https://app.mailersend.com/
 
 ### Incident Response
 1. Check Sentry for error details
@@ -315,8 +287,8 @@ After successful production launch:
 
 1. **Monitor for 48 hours**
    - Watch error rates in Sentry
-   - Track user signups in PostHog
-   - Verify email delivery in Resend
+   - Track user signups in logs
+   - Verify email delivery in MailerSend
 
 2. **Gather user feedback**
    - Set up feedback mechanism
@@ -327,6 +299,6 @@ After successful production launch:
    - Prioritize based on user feedback
 
 4. **Optimize based on data**
-   - Review PostHog analytics
+   - Review analytics from logs
    - Identify drop-off points
    - A/B test improvements

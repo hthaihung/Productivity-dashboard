@@ -50,7 +50,7 @@
 - ✅ Account deletion
 
 ### Production Integrations (Still Active)
-- ✅ Email delivery (Resend)
+- ✅ Email delivery (MailerSend)
 - ✅ Error monitoring (Sentry)
 - ✅ Rate limiting (Upstash Redis)
 - ✅ Security logging
@@ -75,7 +75,7 @@ UPSTASH_REDIS_REST_TOKEN=...
 
 ### Password Reset Email
 ```bash
-RESEND_API_KEY=re_...
+MAILERSEND_API_KEY=...
 EMAIL_FROM=noreply@yourdomain.com
 ```
 
@@ -120,7 +120,7 @@ GOOGLE_CLIENT_SECRET=...
 **Must configure:**
 - [ ] **Supabase** (Database) - https://supabase.com
 - [ ] **Upstash** (Rate Limiting) - https://upstash.com
-- [ ] **Resend** (Email) - https://resend.com
+- [ ] **MailerSend** (Email) - https://mailersend.com
 - [ ] **Sentry** (Error Monitoring) - https://sentry.io
 
 **Optional:**
@@ -182,7 +182,7 @@ These are informational only and don't affect the app functionality.
 - ✅ Email/password auth unchanged
 - ✅ Google OAuth still available
 - ✅ Error monitoring still active (Sentry)
-- ✅ Email delivery still works (Resend)
+- ✅ Email delivery still works (MailerSend)
 - ✅ Rate limiting still active (Upstash)
 
 ### Trade-offs

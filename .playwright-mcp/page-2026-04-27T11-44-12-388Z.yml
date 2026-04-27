@@ -1,0 +1,25 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - heading "Welcome Back" [level=1] [ref=e5]
+    - paragraph [ref=e6]: Sign in to your dashboard
+  - generic [ref=e7]:
+    - button "Continue with Google" [ref=e9] [cursor=pointer]:
+      - img [ref=e10]
+      - text: Continue with Google
+    - generic [ref=e19]: Or continue with email
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]: Email
+        - textbox "Email" [ref=e23]:
+          - /placeholder: you@example.com
+      - generic [ref=e24]:
+        - generic [ref=e25]: Password
+        - textbox "Password" [ref=e26]:
+          - /placeholder: ••••••••
+      - button "Sign In" [ref=e27] [cursor=pointer]
+      - link "Forgot password?" [ref=e29] [cursor=pointer]:
+        - /url: /auth/forgot-password
+  - paragraph [ref=e30]:
+    - text: Don't have an account?
+    - link "Sign up" [ref=e31] [cursor=pointer]:
+      - /url: /auth/signup

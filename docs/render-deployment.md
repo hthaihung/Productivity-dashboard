@@ -6,7 +6,7 @@ This guide covers deploying the Dashboard app to Render as a single Next.js Web 
 
 - GitHub account with repo pushed
 - Render account (free tier available)
-- All third-party services configured (Supabase, Upstash, Resend, Sentry, PostHog)
+- All third-party services configured (Supabase, Upstash, MailerSend, Sentry)
 
 ---
 
@@ -75,17 +75,13 @@ NEXTAUTH_URL=https://your-app-name.onrender.com
 UPSTASH_REDIS_REST_URL=https://your-redis.upstash.io
 UPSTASH_REDIS_REST_TOKEN=your-token-here
 
-# Email (from Resend)
-RESEND_API_KEY=re_your_key_here
+# Email (from MailerSend)
+MAILERSEND_API_KEY=...
 EMAIL_FROM=noreply@yourdomain.com
 
 # Error Monitoring (from Sentry)
 SENTRY_DSN=https://your-sentry-dsn@sentry.io/project-id
 NEXT_PUBLIC_SENTRY_DSN=https://your-sentry-dsn@sentry.io/project-id
-
-# Analytics (from PostHog)
-NEXT_PUBLIC_POSTHOG_KEY=phc_your_key_here
-NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com
 ```
 
 ### Optional OAuth Variables
@@ -93,13 +89,10 @@ NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com
 ```bash
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
-GITHUB_CLIENT_ID=your-github-client-id
-GITHUB_CLIENT_SECRET=your-github-client-secret
 ```
 
 **Important:** Update OAuth callback URLs in provider dashboards:
 - Google: `https://your-app-name.onrender.com/api/auth/callback/google`
-- GitHub: `https://your-app-name.onrender.com/api/auth/callback/github`
 
 ---
 
@@ -145,8 +138,7 @@ Monitor the build logs for any errors.
 ### Verify Monitoring
 
 1. **Sentry**: Check for any errors at https://sentry.io
-2. **PostHog**: Verify events are being tracked at https://posthog.com
-3. **Render Logs**: Check for any warnings in Render dashboard logs
+2. **Render Logs**: Check for any warnings in Render dashboard logs
 
 ---
 
@@ -188,9 +180,9 @@ Monitor the build logs for any errors.
 ### Password Reset Emails Not Sending
 
 **Solution:**
-- Verify `RESEND_API_KEY` is correct
-- Ensure `EMAIL_FROM` uses a verified domain in Resend
-- Check Resend dashboard for delivery logs
+- Verify `MAILERSEND_API_KEY` is correct
+- Ensure `EMAIL_FROM` uses a verified domain in MailerSend
+- Check MailerSend dashboard for delivery logs
 
 ### Rate Limiting Not Working
 
@@ -276,9 +268,8 @@ Or manually:
 - Web Service Starter: $7/month
 - Supabase Pro: $25/month (optional, free tier may suffice)
 - Upstash Redis: Free tier sufficient for most use cases
-- Resend: Free tier (100 emails/day)
+- MailerSend: Free tier (3,000 emails/month)
 - Sentry: Free tier (5k events/month)
-- PostHog: Free tier (1M events/month)
 
 **Total minimum for production: ~$7-32/month**
 
@@ -292,7 +283,6 @@ Or manually:
 - [ ] OAuth callback URLs are correct
 - [ ] Email sending domain is verified
 - [ ] Sentry is receiving errors
-- [ ] PostHog is tracking events
 - [ ] Rate limiting is working
 - [ ] HTTPS is enabled (automatic on Render)
 - [ ] No secrets in git history
@@ -308,4 +298,3 @@ Or manually:
 For app-specific issues, check:
 - Sentry for errors
 - Render logs for deployment issues
-- PostHog for user behavior insights

@@ -1,0 +1,31 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Create Account" [level=1] [ref=e5]
+      - paragraph [ref=e6]: Start your productivity journey
+    - generic [ref=e7]:
+      - button "Continue with Google" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+        - text: Continue with Google
+      - generic [ref=e19]: Or sign up with email
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - generic [ref=e22]: Name
+          - textbox "Name" [ref=e23]:
+            - /placeholder: Your name
+        - generic [ref=e24]:
+          - generic [ref=e25]: Email
+          - textbox "Email" [ref=e26]:
+            - /placeholder: you@example.com
+        - generic [ref=e27]:
+          - generic [ref=e28]: Password
+          - textbox "Password" [ref=e29]:
+            - /placeholder: ••••••••
+        - button "Create Account" [ref=e30] [cursor=pointer]
+    - paragraph [ref=e31]:
+      - text: Already have an account?
+      - link "Sign in" [ref=e32] [cursor=pointer]:
+        - /url: /auth/signin
+  - button "Open Next.js Dev Tools" [ref=e38] [cursor=pointer]:
+    - img [ref=e39]
+  - alert [ref=e42]

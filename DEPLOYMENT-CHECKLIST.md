@@ -71,9 +71,8 @@ git add .env.example
 git commit -m "Initial production-ready commit
 
 - Implemented auth, notes, tasks, pomodoro, streaks, analytics
-- Added email delivery (Resend)
+- Added email delivery (MailerSend)
 - Added error monitoring (Sentry)
-- Added product analytics (PostHog)
 - Added rate limiting (Upstash Redis)
 - Premium dark-first UI redesign
 - Production-ready with full documentation"
@@ -123,7 +122,7 @@ git push -u origin main
 - [ ] REST URL and token copied
 - [ ] Connection tested
 
-#### Resend (Email)
+#### MailerSend (Email)
 - [ ] Account created
 - [ ] Sending domain verified
 - [ ] API key generated
@@ -134,14 +133,8 @@ git push -u origin main
 - [ ] DSN copied
 - [ ] Test error sent and received
 
-#### PostHog (Analytics)
-- [ ] Project created
-- [ ] API key copied
-- [ ] Test event sent and received
-
 #### OAuth Providers (Optional)
 - [ ] Google OAuth app created (if using)
-- [ ] GitHub OAuth app created (if using)
 - [ ] Callback URLs configured
 
 ### Environment Variables Prepared
@@ -178,20 +171,16 @@ git push -u origin main
 - [ ] `UPSTASH_REDIS_REST_TOKEN`
 
 **Email Variables:**
-- [ ] `RESEND_API_KEY`
+- [ ] `MAILERSEND_API_KEY`
 - [ ] `EMAIL_FROM`
 
 **Monitoring Variables:**
 - [ ] `SENTRY_DSN`
 - [ ] `NEXT_PUBLIC_SENTRY_DSN`
-- [ ] `NEXT_PUBLIC_POSTHOG_KEY`
-- [ ] `NEXT_PUBLIC_POSTHOG_HOST`
 
 **Optional OAuth Variables:**
 - [ ] `GOOGLE_CLIENT_ID` (if using)
 - [ ] `GOOGLE_CLIENT_SECRET` (if using)
-- [ ] `GITHUB_CLIENT_ID` (if using)
-- [ ] `GITHUB_CLIENT_SECRET` (if using)
 
 ### 3. Deploy
 - [ ] Clicked "Create Web Service"
@@ -224,7 +213,6 @@ git push -u origin main
 
 ### OAuth (if configured)
 - [ ] Google sign-in works
-- [ ] GitHub sign-in works
 
 ### Core Features
 - [ ] Create note works
@@ -241,12 +229,11 @@ git push -u origin main
 
 ### Monitoring Verification
 - [ ] Sentry receiving events (check dashboard)
-- [ ] PostHog tracking events (check dashboard)
-- [ ] Signup event appears in PostHog
-- [ ] Signin event appears in PostHog
-- [ ] Note created event appears in PostHog
-- [ ] Task completed event appears in PostHog
-- [ ] Pomodoro completed event appears in PostHog
+- [ ] Signup event logged
+- [ ] Signin event logged
+- [ ] Note created event logged
+- [ ] Task completed event logged
+- [ ] Pomodoro completed event logged
 
 ### Performance Check
 - [ ] Page load time acceptable (<3s)
@@ -296,12 +283,11 @@ git push -u origin main
 
 ### Hour 6
 - [ ] Review error rate in Sentry
-- [ ] Check user signup rate in PostHog
-- [ ] Verify email delivery in Resend
+- [ ] Check user signup rate in logs
+- [ ] Verify email delivery in MailerSend
 
 ### Hour 24
 - [ ] Review all error types in Sentry
-- [ ] Analyze user behavior in PostHog
 - [ ] Check database performance in Supabase
 - [ ] Review rate limit hits in logs
 
@@ -365,7 +351,7 @@ git push -u origin main
 - **Render Support**: https://render.com/support
 - **Supabase Support**: https://supabase.com/support
 - **Sentry Support**: https://sentry.io/support
-- **Resend Support**: https://resend.com/support
+- **MailerSend Support**: https://mailersend.com/help
 
 ---
 
