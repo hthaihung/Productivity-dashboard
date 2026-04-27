@@ -1,15 +1,23 @@
 import { Sidebar } from "@/components/Sidebar"
+import { auth } from "@/lib/auth"
+import { redirect } from "next/navigation"
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const session = await auth()
+
+  if (!session?.user) {
+    redirect("/auth/signin")
+  }
+
   return (
-    <div className="flex h-screen bg-background">
+    <div className="page-shell flex min-h-screen bg-background text-foreground">
       <Sidebar />
-      <main className="flex-1 ml-64 overflow-y-auto">
-        <div className="container mx-auto p-8">
+      <main className="flex-1 overflow-y-auto lg:ml-72">
+        <div className="mx-auto min-h-screen w-full max-w-[var(--content-width)] px-5 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10">
           {children}
         </div>
       </main>

@@ -1,36 +1,46 @@
 @import "tailwindcss";
 
 :root {
-  /* Dark-first color system */
-  --background: #0a0a0c;
-  --surface-1: #1a1a1e;
-  --surface-2: #25252a;
-  --surface-3: #2f2f35;
-  --foreground: #ededed;
-  --foreground-muted: #a0a0a8;
+  --background: #07090d;
+  --background-elevated: #0d1017;
+  --surface-1: #131722;
+  --surface-2: #1a2030;
+  --surface-3: #222a3d;
+  --surface-glass: rgba(20, 26, 38, 0.72);
+  --foreground: #f4f7fb;
+  --foreground-muted: #a1adbf;
+  --foreground-soft: #7f8a9d;
 
-  /* Accent colors */
   --accent-primary: #06b6d4;
+  --accent-primary-soft: rgba(6, 182, 212, 0.16);
   --accent-secondary: #8b5cf6;
   --success: #10b981;
   --warning: #f59e0b;
   --danger: #ec4899;
 
-  /* Borders and shadows */
-  --border: #2f2f35;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 20px rgba(6, 182, 212, 0.2);
+  --border: rgba(144, 163, 192, 0.12);
+  --border-strong: rgba(148, 168, 200, 0.22);
+  --shadow-sm: 0 8px 24px rgba(3, 6, 14, 0.22);
+  --shadow-md: 0 18px 48px rgba(3, 6, 14, 0.3);
+  --shadow-lg: 0 30px 80px rgba(2, 6, 15, 0.42);
+  --shadow-glow: 0 0 0 1px rgba(6, 182, 212, 0.08), 0 20px 60px rgba(6, 182, 212, 0.16);
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --content-width: 1280px;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
   --color-foreground: var(--foreground);
   --color-surface-1: var(--surface-1);
   --color-surface-2: var(--surface-2);
   --color-surface-3: var(--surface-3);
+  --color-surface-glass: var(--surface-glass);
   --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-soft: var(--accent-primary-soft);
   --color-accent-secondary: var(--accent-secondary);
   --color-success: var(--success);
   --color-warning: var(--warning);
@@ -43,36 +53,118 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(6, 182, 212, 0.1), transparent 24%),
+    radial-gradient(circle at 85% 12%, rgba(139, 92, 246, 0.08), transparent 18%),
+    linear-gradient(180deg, #0a0d14 0%, #07090d 35%, #06070b 100%);
   color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-feature-settings: "kern" 1, "liga" 1;
+  font-feature-settings: "kern" 1, "liga" 1, "tnum" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar styling */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(6, 182, 212, 0.24);
+  color: var(--foreground);
+}
+
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--surface-1);
+  background: rgba(19, 23, 34, 0.75);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--surface-3);
-  border-radius: 4px;
+  background: rgba(127, 138, 157, 0.36);
+  border-radius: 999px;
+  border: 2px solid rgba(19, 23, 34, 0.75);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-primary);
+  background: rgba(6, 182, 212, 0.56);
 }
 
-/* Focus styles */
 *:focus-visible {
-  outline: 2px solid var(--accent-primary);
+  outline: 2px solid rgba(6, 182, 212, 0.95);
   outline-offset: 2px;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.panel-surface {
+  background: linear-gradient(180deg, rgba(28, 34, 48, 0.92) 0%, rgba(18, 23, 35, 0.94) 100%);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(18px);
+}
+
+.page-shell {
+  position: relative;
+}
+
+.page-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(6, 182, 212, 0.08), transparent 24%),
+    radial-gradient(circle at 80% 0%, rgba(139, 92, 246, 0.06), transparent 18%);
+  opacity: 0.9;
+}
+
+.metric-numeral {
+  letter-spacing: -0.04em;
+}
+
+.section-label {
+  color: var(--foreground-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --content-width: 100%;
+  }
 }

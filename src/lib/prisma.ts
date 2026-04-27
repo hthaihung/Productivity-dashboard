@@ -11,6 +11,7 @@ const createPrismaClient = () => {
     throw new Error('DATABASE_URL is not defined')
   }
 
+  // Use pooled connection (DATABASE_URL) for runtime queries
   const pool = new Pool({ connectionString: process.env.DATABASE_URL })
   const adapter = new PrismaPg(pool)
 
