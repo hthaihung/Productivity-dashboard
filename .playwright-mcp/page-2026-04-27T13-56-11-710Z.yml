@@ -1,0 +1,16 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: Account protection
+      - generic [ref=e8]:
+        - heading "This email is already tied to another sign-in method" [level=1] [ref=e9]
+        - paragraph [ref=e10]: For your security, we can’t automatically connect Google to an existing account that was created another way.
+    - generic [ref=e11]: Sign in using the original method you used before. After that, you can connect Google later only if the product adds a safe linking flow inside settings.
+    - generic [ref=e12]:
+      - link "Return to sign in" [ref=e13] [cursor=pointer]:
+        - /url: /auth/signin
+      - link "See sign-in guidance" [ref=e14] [cursor=pointer]:
+        - /url: /auth/signin?error=OAuthAccountNotLinked
+  - button "Open Next.js Dev Tools" [ref=e20] [cursor=pointer]:
+    - img [ref=e21]
+  - alert [ref=e24]

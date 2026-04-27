@@ -1,0 +1,48 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: Personal OS
+      - generic [ref=e8]:
+        - heading "Build a cleaner system for study, work, focus, and momentum." [level=1] [ref=e9]
+        - paragraph [ref=e10]: Create your account to bring notes, tasks, focus sessions, and streaks into one refined operating layer.
+      - generic [ref=e11]:
+        - generic [ref=e13]:
+          - paragraph [ref=e14]: Clarity
+          - paragraph [ref=e15]: One place to orient
+          - paragraph [ref=e16]: See the shape of your work without the usual dashboard clutter.
+        - generic [ref=e18]:
+          - paragraph [ref=e19]: Momentum
+          - paragraph [ref=e20]: Built to keep moving
+          - paragraph [ref=e21]: Tasks, streaks, and focus blocks stay aligned from day one.
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - paragraph [ref=e25]: Create account
+        - generic [ref=e26]:
+          - heading "Start your productivity system" [level=2] [ref=e27]
+          - paragraph [ref=e28]: Set up your account and step into a calmer dashboard for work, study, and focus.
+      - generic [ref=e29]:
+        - button "Continue with Google" [ref=e30] [cursor=pointer]:
+          - img [ref=e31]
+          - text: Continue with Google
+        - generic [ref=e40]: Or sign up with email
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - generic [ref=e43]: Name
+            - textbox "Name" [ref=e44]:
+              - /placeholder: Your name
+          - generic [ref=e45]:
+            - generic [ref=e46]: Email
+            - textbox "Email" [ref=e47]:
+              - /placeholder: you@example.com
+          - generic [ref=e48]:
+            - generic [ref=e49]: Password
+            - textbox "Password" [ref=e50]:
+              - /placeholder: ••••••••
+          - button "Create Account" [ref=e51] [cursor=pointer]
+      - paragraph [ref=e52]:
+        - text: Already have an account?
+        - link "Sign in" [ref=e53] [cursor=pointer]:
+          - /url: /auth/signin
+  - button "Open Next.js Dev Tools" [ref=e59] [cursor=pointer]:
+    - img [ref=e60]
+  - alert [ref=e63]

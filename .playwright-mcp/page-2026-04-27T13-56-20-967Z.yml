@@ -1,0 +1,47 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e6]:
+          - generic [ref=e9]: Personal OS
+          - generic [ref=e10]:
+            - heading "Dashboard" [level=1] [ref=e11]
+            - paragraph [ref=e12]: Your quieter command layer for focus, planning, and momentum.
+        - navigation [ref=e13]:
+          - link "Dashboard" [ref=e14] [cursor=pointer]:
+            - /url: /dashboard
+            - img [ref=e17]
+            - generic [ref=e19]: Dashboard
+          - link "Notes" [ref=e21] [cursor=pointer]:
+            - /url: /dashboard/notes
+            - img [ref=e24]
+            - generic [ref=e26]: Notes
+          - link "Tasks" [ref=e27] [cursor=pointer]:
+            - /url: /dashboard/tasks
+            - img [ref=e30]
+            - generic [ref=e32]: Tasks
+          - link "Focus" [ref=e33] [cursor=pointer]:
+            - /url: /dashboard/focus
+            - img [ref=e36]
+            - generic [ref=e38]: Focus
+          - link "Streaks" [ref=e39] [cursor=pointer]:
+            - /url: /dashboard/streaks
+            - img [ref=e42]
+            - generic [ref=e45]: Streaks
+          - link "Analytics" [ref=e46] [cursor=pointer]:
+            - /url: /dashboard/analytics
+            - img [ref=e49]
+            - generic [ref=e51]: Analytics
+        - generic [ref=e52]:
+          - link "Settings" [ref=e53] [cursor=pointer]:
+            - /url: /dashboard/settings
+            - img [ref=e55]
+            - generic [ref=e58]: Settings
+          - button "Sign Out" [ref=e60] [cursor=pointer]:
+            - img [ref=e62]
+            - generic [ref=e64]: Sign Out
+    - main [ref=e65]:
+      - paragraph [ref=e70]: Loading...
+  - button "Open Next.js Dev Tools" [ref=e76] [cursor=pointer]:
+    - img [ref=e77]
+  - alert [ref=e80]
