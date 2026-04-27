@@ -16,8 +16,8 @@ export default async function DashboardLayout({
   return (
     <div className="page-shell flex min-h-screen bg-background text-foreground">
       <Sidebar />
-      <main className="flex-1 overflow-y-auto lg:ml-[calc(var(--sidebar-width)+1.25rem)]">
-        <div className="mx-auto min-h-screen w-full max-w-[var(--content-width)] px-4 py-5 sm:px-6 sm:py-7 lg:px-8 lg:py-8 xl:px-10 xl:py-10">
+      <main className="flex-1 overflow-y-auto lg:ml-[calc(var(--sidebar-width)+0.75rem)] xl:ml-[calc(var(--sidebar-width)+1rem)]">
+        <div className="mx-auto min-h-screen w-full max-w-[var(--content-width)] px-4 py-4 sm:px-5 sm:py-6 lg:px-6 lg:py-7 xl:px-8 xl:py-8">
           {children}
         </div>
       </main>
